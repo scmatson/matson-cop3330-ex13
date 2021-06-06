@@ -1,4 +1,8 @@
 package base;
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
 /*
  *  UCF COP3330 Summer 2021 Assignment 1 Solution
  *  Copyright 2021 Scott Matson
@@ -38,4 +42,25 @@ Challenges
 -Implement this program as a GUI app that automatically updates the values when any value changes.
  */
 public class App {
+    public static void main(String[] args) {
+        Scanner ui = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("####.00");
+
+        System.out.print("What is the principal amount? ");
+        double p = ui.nextDouble();
+
+        System.out.print("What is the rate? ");
+        double rate = ui.nextDouble();
+        double r = rate/100;
+
+        System.out.print("What is the number of years? ");
+        int t = ui.nextInt();
+
+        System.out.print("What is the number of times the interest is compounded per year? ");
+        int n = ui.nextInt();
+
+        double A = p * (Math.pow((1 + r/n), (n*t)));
+
+        System.out.println("$" + df.format(p) + " invested at " + rate + "% for " + t + " years compounded " + n + " times per year is $" + df.format(A) + ".");
+    }
 }
